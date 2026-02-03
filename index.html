@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Artisan's Café</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
+            background: #f7f3e7;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 220px; 
+            max-width: 70vw;
+            margin-bottom: 36px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+
+            width: 100%;
+            padding: 18px;
+            margin: 16px 0;
+
+            border: 2px solid #000;
+            border-radius: 16px;
+            background: #fff;
+
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .btn img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="logo.png" alt="De Artisan’s Café" class="logo">
+
+        <a class="btn" href="#" target="_blank">
+            <img src="/google.png" alt="Google">
+            <span>Google Review</span>
+        </a>
+
+        <a class="btn" href="https://www.instagram.com/deartisanscafe" target="_blank">
+            <img src="/instagram.png" alt="Instagram">
+            <span>Instagram</span>
+        </a>
+
+        <a class="btn" href="https://wa.me/9713405971" target="_blank">
+            <img src="/whatsapp.png" alt="WhatsApp">
+            <span>WhatsApp</span>
+        </a>
+    </div>
+</body>
+</html>
