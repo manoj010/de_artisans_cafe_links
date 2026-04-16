@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow: hidden;">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,16 +29,25 @@
             padding: 0;
         }
 
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #0c0a09;
             color: var(--text-main);
             height: 100vh;
+            height: 100dvh; /* Modern mobile viewport height */
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            position: relative;
+            position: fixed; /* Prevent any scrolling */
+            top: 0;
+            left: 0;
         }
 
         /* Enhanced Atmospheric Background */
