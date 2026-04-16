@@ -41,29 +41,22 @@
             position: relative;
         }
 
-        /* Background with Overlay */
+        /* Enhanced Atmospheric Background */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(12, 10, 9, 0.4), rgba(12, 10, 9, 0.9)),
-                url('bg.png') center/cover no-repeat;
+            background-color: #0c0a09;
+            background-image: 
+                radial-gradient(circle at 50% -20%, rgba(121, 91, 68, 0.5) 0%, transparent 75%),
+                radial-gradient(circle at 100% 100%, rgba(45, 36, 30, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(26, 26, 26, 0.5) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: normal, normal, normal, overlay;
+            opacity: 1;
             z-index: -1;
-            transform: scale(1.1);
-            filter: blur(2px);
-            animation: bg-pan 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes bg-pan {
-            from {
-                transform: scale(1.05) translate(0, 0);
-            }
-
-            to {
-                transform: scale(1.15) translate(-10px, -10px);
-            }
         }
 
         .container {
@@ -273,7 +266,7 @@
     <div class="container">
         <header class="header">
             <div class="logo-container">
-                <img src="logo.svg" alt="De Artisan’s Café" class="logo">
+                <img src="assets/logo.svg" alt="De Artisan’s Café" class="logo">
             </div>
             <p class="tagline">Crafting Moments, Peace and Vibes.</p>
         </header>
@@ -281,7 +274,7 @@
         <div class="links-wrapper">
             <a class="btn" href="https://g.page/r/CSJ3Jpn6uGNmEAI/review" target="_blank">
                 <div class="icon-box">
-                    <img src="google.png" alt="Google" onerror="this.src='/google.png'">
+                    <img src="assets/google.png" alt="Google" onerror="this.src='assets/google.png'">
                 </div>
                 <span class="btn-text">Share Your Experience</span>
                 <span class="arrow-icon">→</span>
@@ -289,7 +282,7 @@
 
             <a class="btn" href="https://www.instagram.com/deartisanscafe" target="_blank">
                 <div class="icon-box">
-                    <img src="instagram.png" alt="Instagram" onerror="this.src='/instagram.png'">
+                    <img src="assets/instagram.png" alt="Instagram" onerror="this.src='assets/instagram.png'">
                 </div>
                 <span class="btn-text">Follow Our Journey</span>
                 <span class="arrow-icon">→</span>
@@ -297,7 +290,7 @@
 
             <a class="btn" href="#" target="_blank">
                 <div class="icon-box">
-                    <img src="tiktok.png" alt="TikTok" onerror="this.src='/tiktok.png'">
+                    <img src="assets/tiktok.png" alt="TikTok" onerror="this.src='assets/tiktok.png'">
                 </div>
                 <span class="btn-text">Watch Our Stories</span>
                 <span class="arrow-icon">→</span>
@@ -305,7 +298,7 @@
 
             <a class="btn" href="https://wa.me/9713405971" target="_blank">
                 <div class="icon-box">
-                    <img src="whatsapp.png" alt="WhatsApp" onerror="this.src='/whatsapp.png'">
+                    <img src="assets/whatsapp.png" alt="WhatsApp" onerror="this.src='assets/whatsapp.png'">
                 </div>
                 <span class="btn-text">Connect on WhatsApp</span>
                 <span class="arrow-icon">→</span>
