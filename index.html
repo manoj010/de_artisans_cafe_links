@@ -1,94 +1,317 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow: hidden;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Artisan's Café</title>
+    <title>De Artisan's Café | Connections</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
 
     <style>
+        :root {
+            --primary-gold: #c5a059;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
-            background: #f7f3e7;
-            min-height: 100vh;
+            font-family: 'Outfit', sans-serif;
+            background-color: #0c0a09;
+            color: var(--text-main);
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background with Overlay */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(12, 10, 9, 0.4), rgba(12, 10, 9, 0.9)),
+                url('bg.png') center/cover no-repeat;
+            z-index: -1;
+            transform: scale(1.1);
+            filter: blur(2px);
+            animation: bg-pan 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bg-pan {
+            from {
+                transform: scale(1.05) translate(0, 0);
+            }
+
+            to {
+                transform: scale(1.15) translate(-10px, -10px);
+            }
         }
 
         .container {
             width: 100%;
-            max-width: 420px;
+            max-width: 480px;
+            padding: 24px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Ensure content doesn't exceed screen height */
+            max-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: 32px;
+            animation: fadeInDown 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 24px;
         }
 
         .logo {
-            width: 220px; 
-            max-width: 70vw;
-            margin-bottom: 36px;
+            width: 160px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.3));
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--primary-gold);
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+
+        .links-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .btn {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-
-            width: 100%;
-            padding: 18px;
-            margin: 16px 0;
-
-            border: 2px solid #000;
-            border-radius: 16px;
-            background: #fff;
-
+            padding: 16px 20px;
             text-decoration: none;
-            color: #000;
-            font-size: 18px;
-            font-weight: 500;
+            color: var(--text-main);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Staggered animation for links */
+        .btn:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .btn:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .btn:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .btn:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover .icon-box {
+            transform: scale(1.1);
+            background: rgba(197, 160, 89, 0.1);
         }
 
         .btn img {
             width: 24px;
             height: 24px;
             object-fit: contain;
+            filter: brightness(1.1);
         }
 
-        .btn:active {
-            transform: scale(0.97);
+        .btn-text {
+            flex-grow: 1;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .arrow-icon {
+            opacity: 0.5;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .btn:hover .arrow-icon {
+            transform: translateX(4px);
+            opacity: 1;
+            color: var(--primary-gold);
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+
+            .logo {
+                width: 130px;
+            }
+
+            .btn-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="bg-overlay"></div>
+
     <div class="container">
-        <img src="logo.png" alt="De Artisan’s Café" class="logo">
+        <header class="header">
+            <div class="logo-container">
+                <img src="logo.svg" alt="De Artisan’s Café" class="logo">
+            </div>
+            <p class="tagline">Crafting Moments, Peace and Vibes.</p>
+        </header>
 
-        <a class="btn" href="#" target="_blank">
-            <img src="/google.png" alt="Google">
-            <span>Google Review</span>
-        </a>
+        <div class="links-wrapper">
+            <a class="btn" href="https://g.page/r/CSJ3Jpn6uGNmEAI/review" target="_blank">
+                <div class="icon-box">
+                    <img src="google.png" alt="Google" onerror="this.src='/google.png'">
+                </div>
+                <span class="btn-text">Share Your Experience</span>
+                <span class="arrow-icon">→</span>
+            </a>
 
-        <a class="btn" href="https://www.instagram.com/deartisanscafe" target="_blank">
-            <img src="/instagram.png" alt="Instagram">
-            <span>Instagram</span>
-        </a>
+            <a class="btn" href="https://www.instagram.com/deartisanscafe" target="_blank">
+                <div class="icon-box">
+                    <img src="instagram.png" alt="Instagram" onerror="this.src='/instagram.png'">
+                </div>
+                <span class="btn-text">Follow Our Journey</span>
+                <span class="arrow-icon">→</span>
+            </a>
 
-        <a class="btn" href="#" target="_blank">
-            <img src="/tiktok.png" alt="TikTok">
-            <span>TikTok</span>
-        </a>
+            <a class="btn" href="#" target="_blank">
+                <div class="icon-box">
+                    <img src="tiktok.png" alt="TikTok" onerror="this.src='/tiktok.png'">
+                </div>
+                <span class="btn-text">Watch Our Stories</span>
+                <span class="arrow-icon">→</span>
+            </a>
 
-        <a class="btn" href="https://wa.me/9713405971" target="_blank">
-            <img src="/whatsapp.png" alt="WhatsApp">
-            <span>WhatsApp</span>
-        </a>
+            <a class="btn" href="https://wa.me/9713405971" target="_blank">
+                <div class="icon-box">
+                    <img src="whatsapp.png" alt="WhatsApp" onerror="this.src='/whatsapp.png'">
+                </div>
+                <span class="btn-text">Connect on WhatsApp</span>
+                <span class="arrow-icon">→</span>
+            </a>
+        </div>
     </div>
 </body>
+
 </html>
