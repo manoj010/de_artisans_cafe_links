@@ -1,0 +1,9 @@
+{
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "destination": "https://www.deartisanscafe.com/links",
+            "permanent": true
+        }
+    ]
+}
